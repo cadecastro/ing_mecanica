@@ -1,12 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Created on Wed Oct 13 20:01:00 2021
 DISEÑO Y DESEMPEÑO AVIÓN LIVIANO
 @author: cadecastro.com
 """
-import numpy as np
-import matplotlib.pyplot as plt
+import numpy as np, matplotlib.pyplot as plt
+
 #MASA DEL AVIÓN:
 m=250#[kg] Masa del avión + Ocupantes + Carga
 
@@ -171,77 +169,72 @@ print('Potencia mínima requerida=',np.format_float_positional(Preq_min*1/746,pr
 print('Empuje mínimo requerido=',np.format_float_positional(Treq_min,precision=1),'N')#
 
 #Gráficas:
-plt.figure(1)
-plt.subplot(141)
+plt.figure(1,figsize=(10,11))
+plt.subplot(221)
 plt.plot(alpha,CL,'b')
 plt.plot(alpha,CL_perfil,'r-.')
 plt.grid(True,'both','both')
-plt.title('Coef. sustentación vs. AOA')
+plt.title('Coef. sustentación vs. AOA', weight='bold' )
 plt.xlabel('Ángulo de ataque [grados]')
 plt.ylabel('C_L')
 plt.legend(['Avión','Perfil'])
-
-plt.subplot(142)
+plt.subplot(222)
 plt.plot(alpha,CD,'b')
 plt.plot(alpha,CD_perfil,'r-.')
 plt.grid(True,'both','both')
-plt.title('Coef. arrastre vs. AOA')
+plt.title('Coef. arrastre vs. AOA', weight='bold' )
 plt.xlabel('Ángulo de ataque [grados]')
 plt.ylabel('C_D')
 plt.legend(['Avión','Perfil'])
-
-plt.subplot(143)
+plt.subplot(223)
 plt.plot(CL,L_D,'b')
 plt.plot(CL_perfil,L_D_perfil,'r-.')
 plt.grid(True,'both','both')
-plt.title('L/D vs. C_L')
+plt.title('L/D vs. C_L', weight='bold' )
 plt.xlabel('C_L')
 plt.ylabel('L/D')
 plt.legend(['Avión','Perfil'])
-
-plt.subplot(144)
+plt.subplot(224)
 plt.plot(CD,CL,'b')
 plt.plot(CD_perfil,CL_perfil,'r-.')
 plt.grid(True,'both','both')
-plt.title('Polar de arrastre')
+plt.title('Polar de arrastre', weight='bold' )
 plt.xlabel('C_D')
 plt.ylabel('C_L')
 plt.legend(['Avión','Perfil'])
 
-plt.figure(2)
+plt.figure(2,figsize=(10,8))
 plt.subplot(211)
 plt.plot(V,Preq,'b')
 plt.plot(V,Pdispo,'r-.')
 plt.grid(True,'both','both')
-plt.title('Vuelo recto y nivelado')
+plt.title('Vuelo recto y nivelado', weight='bold' )
 plt.ylabel('Potencia [HP]')
 plt.legend(['Requerida','Disponible'])
-
 plt.subplot(212)
 plt.plot(V,Treq,'b')
 plt.grid(True,'both','both')
 plt.xlabel('Velocidad [mph] - cadecastro.com')
 plt.ylabel('Empuje requerido [N]')
 
-plt.figure(3)
-plt.plot(V,VS4,'r-')
-plt.plot(V,VS3,'b--')
-plt.plot(V,VS2,'r-.')
-plt.plot(V,VS1,'b:')
-plt.plot(V,VS0,'r-d')
+plt.figure(3,figsize=(10,5))
+plt.plot(V,VS4,color='red')
+plt.plot(V,VS3,color='gold')
+plt.plot(V,VS2,color='green')
+plt.plot(V,VS1,color='blue')
+plt.plot(V,VS0,color='black')
 plt.grid(True,'both','both')
-plt.title('Curvas de desempeño')
+plt.title('Curvas de desempeño', weight='bold' )
 plt.xlabel('Velocidad [mph]')
 plt.ylabel('Velocidad vertical [pies/min]')
 plt.legend(['100 % Potencia','75 % Potencia','50 % Potencia','Mínima requerida','Planeo'])
 
-plt.figure(4)
+plt.figure(4,figsize=(10,8))
 plt.subplot(211)
 plt.plot(theta,Vstallv,'b')
 plt.grid(True,'both','both')
-plt.title('V_stall y factor de carga en viraje - cadecastro.com')
+plt.title('V_stall y factor de carga en viraje | cadecastro.com', weight='bold' )
 plt.ylabel('Velocidad de pérdida [mph]')
-
 plt.subplot(212)
 plt.plot(theta,n,'b')
 plt.grid(True,'both','both')
